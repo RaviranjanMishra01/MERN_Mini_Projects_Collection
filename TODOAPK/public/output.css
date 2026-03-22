@@ -7,10 +7,15 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-200: oklch(88.5% 0.062 18.334);
-    --color-red-500: oklch(63.7% 0.237 25.331);
-    --color-cyan-200: oklch(91.7% 0.08 205.041);
+    --color-yellow-500: oklch(79.5% 0.184 86.047);
+    --color-blue-200: oklch(88.2% 0.059 254.128);
+    --color-gray-200: oklch(92.8% 0.006 264.531);
+    --color-gray-400: oklch(70.7% 0.022 261.325);
     --spacing: 0.25rem;
+    --container-lg: 32rem;
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --font-weight-semibold: 600;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -167,51 +172,91 @@
   .start {
     inset-inline-start: var(--spacing);
   }
-  .table {
-    display: table;
+  .mt-4 {
+    margin-top: calc(var(--spacing) * 4);
   }
-  .border-collapse {
-    border-collapse: collapse;
+  .flex {
+    display: flex;
   }
-  .resize {
-    resize: both;
+  .min-h-screen {
+    min-height: 100vh;
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
+  .w-full {
+    width: 100%;
   }
-  .text-cyan-200 {
-    color: var(--color-cyan-200);
+  .max-w-lg {
+    max-width: var(--container-lg);
   }
-  .text-red-200 {
-    color: var(--color-red-200);
+  .flex-wrap {
+    flex-wrap: wrap;
   }
-  .text-red-500 {
-    color: var(--color-red-500);
+  .items-center {
+    align-items: center;
   }
-  .underline {
-    text-decoration-line: underline;
+  .justify-center {
+    justify-content: center;
   }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .bg-gray-200 {
+    background-color: var(--color-gray-200);
+  }
+  .bg-gray-400 {
+    background-color: var(--color-gray-400);
+  }
+  .bg-yellow-500 {
+    background-color: var(--color-yellow-500);
+  }
+  .p-1 {
+    padding: calc(var(--spacing) * 1);
+  }
+  .p-1\.5 {
+    padding: calc(var(--spacing) * 1.5);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .text-center {
+    text-align: center;
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .text-shadow-blue-200 {
+    --tw-text-shadow-color: oklch(88.2% 0.059 254.128);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-text-shadow-color: color-mix(in oklab, var(--color-blue-200) var(--tw-text-shadow-alpha), transparent);
+    }
   }
 }
-@property --tw-border-style {
+@property --tw-font-weight {
   syntax: "*";
   inherits: false;
-  initial-value: solid;
 }
-@property --tw-outline-style {
+@property --tw-text-shadow-color {
   syntax: "*";
   inherits: false;
-  initial-value: solid;
+}
+@property --tw-text-shadow-alpha {
+  syntax: "<percentage>";
+  inherits: false;
+  initial-value: 100%;
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-border-style: solid;
-      --tw-outline-style: solid;
+      --tw-font-weight: initial;
+      --tw-text-shadow-color: initial;
+      --tw-text-shadow-alpha: 100%;
     }
   }
 }
