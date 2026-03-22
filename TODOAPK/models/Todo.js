@@ -1,14 +1,18 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const todoSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
-  },
-  completed: {
+  }, completed: {
     type: Boolean,
     default: false,
   },
 }, { timestamps: true });
 
-export const Todo = mongoose.model("Todo", todoSchema);
+const Todo = mongoose.model("Todo", todoSchema);
+
+module.exports = Todo;
+
+
+
