@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/output.css">
     <title>Document</title>
 </head>
+
 <body>
-    <h2 class="text-red-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. In obcaecati nemo velit quas fugiat veniam consequuntur provident iure eos aut numquam, nam impedit nulla suscipit adipisci dolores autem eum pariatur quibusdam non? Vel ipsum accusamus necessitatibus, voluptate quae reiciendis.</h2>
+    <div class="w-full  min-h-screen flex justify-center items-center bg-gray-200">
+        <div class="max-w-lg bg-gray-400 p-4 rounded">
+            <h1 class="text-center text-2xl text-shadow-blue-200 font-semibold">Todo List</h1>
+            <form class=" mt-4 flex flex-wrap gap-2"  action="/submit" method="POST" >
+                <input type="text"  name="Task_name" placeholder="enter your new task" class="p-1  rounded ">
+                <input type="submit" class="rounded bg-yellow-500 p-1.5">
+            </form>
+        </div>
+        
+    </div>
 </body>
+
 </html>
