@@ -3,11 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Notes App</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <form action="">
-        <h3 class="bg-pink-600 text-red-300">hyy ji kaise hai aap log</h3>
-    </form>
+
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+
+    <div class="w-full max-w-xl bg-white shadow-lg rounded-lg p-6">
+        <h2 class="text-2xl font-bold text-center mb-4">📝 Notes App</h2>
+
+        <!-- ADD NOTE -->
+        <form action="/addnote" method="POST" class="flex gap-2 mb-6">
+            <input 
+                type="text" 
+                name="new_task" 
+                placeholder="Add new task..."
+                class="flex-1 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                required
+            >
+            <button class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition">
+                Add
+            </button>
+        </form>
+
+        <!-- NOTES LIST -->
+        <% if (note.length === 0) { %>
+            <p class="text-center text-gray-400">No Task yet</p>
+        <% } else { %>
+            <ul class="space-y-2">
+
+                <% note.forEach(n => { %>
+
+                    <!-- TOGGLE MARK FORM -->
+                    <form action="/note/<%= n._id %>/toggle" method="POST">
+                        <button type="submit" class="w-full text-left">
+
+                            <li class="flex items-center justify-between p-3 rounded border 
+                                <%= n.mark ? 'bg-green-100 border-green-400' : 'bg-gray-50' %>">
+
+                                <!-- LEFT -->
+                                <div class="flex items-center gap-2">
+                                    <input 
+                                        type="checkbox" 
+                                        <%= n.mark ? "checked" : "" %>
+                                        readonly
+                                        class="w-4 h-4"
+                                    >
+
+                                    <span class="<%= n.mark ? 'line-through text-gray-500' : '' %>">
+                                        <%= n.title %>
+                                    </span>
+                                </div>
+
+                                <!-- BADGE -->
+                                <% if (n.mark) { %>
+                                    <span class="text-xs bg-green-500 text-white px-2 py-1 rounded">
+                                        Pinned
+                                    </span>
+                                <% } %>
+
+                            </li>
+
+                        </button>
+                    </form>
+
+                <% }) %>
+
+            </ul>
+        <% } %>
+
+    </div>
+
 </body>
 </html>
