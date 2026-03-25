@@ -2,7 +2,7 @@ const express = require("express")
 const app = express();
 const mongoose = require("mongoose")
 const Route = require("./routes/noteroute")
-const DB_URL = "mongodb+srv://Ravi01:Ravi01@cluster0.g6uewf4.mongodb.net/?appName=Cluster0"
+const DB_URL = "mongodb+srv://Ravi01:Ravi01@cluster0.g6uewf4.mongodb.net/Notes?appName=Cluster0"
 
 app.set("view engine","ejs")
 app.use(express.static("public"))
