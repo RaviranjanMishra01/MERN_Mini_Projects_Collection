@@ -1,6 +1,7 @@
 const Todo = require('../models/Todo');
 
 exports.getTodo =async (req, res) => {
+    console.log(req)
     try{
         const todos = await Todo.find().lean(); //find data
         res.render("home",{todos}) // pass ejs
