@@ -12,20 +12,20 @@ exports.getLogin = (req, res) => {
 exports.postLogin = async (req, res) => {
     try {
         const { email, password } = req.body;
-        console.log("user login data", data);
+        console.log("user login data", req.body);
         const existingUser = await user.findOne({email})
         if(!existingUser)
         {
-            console.error("error user not found")
-            res.redirect("register")
+            console.error("user not found")
+            res.redirect("/register")
         }
-        if(existingUser !== password)
+        if(existingUser.password !== password)
         {
-            console.error("user password wrong")
-            res.redirect("login")
+            console.error("Wrong password")
+            res.redirect("/login")
         }
-        console.log("login successful ")
-        res.redirect("index")
+        console.log("login successfully")
+        return res.render("newuser", { user: existingUser });
     } catch (error) {
         console.error("server error ", error)
     }
@@ -47,4 +47,11 @@ exports.postRegister = async (req, res) => {
 exports.getForgot = (req, res) => {
     console.log("forgot password page");
     res.render("forgot");
+};
+
+exports.getNewUser = async (req, res) => {
+    // demo ke liye first user fetch
+    const existingUser = await user.findOne();
+
+    res.render("newuser", { user: existingUser });
 };
