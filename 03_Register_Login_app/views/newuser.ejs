@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/output.css">
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <div class="bg-white shadow-xl rounded-2xl p-8 w-96">
+
+        <h2 class="text-xl font-bold mb-4 text-center">
+            Welcome <%= user.name %> 👋
+        </h2>
+
+        <div class="space-y-2 text-gray-700">
+            <p><strong>Email:</strong> <%= user.email %></p>
+            <p><strong>Phone:</strong> <%= user.phoneNum %></p>
+            <p><strong>Gender:</strong> <%= user.gender %></p>
+            <p><strong>DOB:</strong> <%= user.birth %></p>
+        </div>
+
+    </div>
+
+</body>
+</html>
